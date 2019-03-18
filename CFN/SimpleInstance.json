@@ -1,0 +1,30 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Create an EC2 instance running the katest Amazon Linux AMI.",
+    "Parameters": {
+        "KeyPair": {
+            "Descpription":"The EC2 keypair to allow SSH access in to the instance",
+            "Type": "String"
+        }
+    },
+    "Resources":{
+        "Ec2Instance":{
+            "ImageId": "ami-dd925baa",
+            "InstanceType":"m3.medirum",
+            "KeryName":{
+                "Ref": "KeyPair"
+            },
+            "SecurityGroup": ["sg-6d958a14"] 
+        },
+        "Type": "AWS::EC2::Instance"
+        
+    },
+    "Outputs":{
+        "InstanceId": {
+            "Description" : "The InstanceId of the newly created EC2 instance",
+            "Value": {
+                "Ref":"Ec2Instance"
+            }
+        }
+    }
+}
